@@ -1,0 +1,33 @@
+<!-- Banner de Cookies -->
+<div id="cookie-banner" style="position: fixed; bottom: 0; left: 0; right: 0; background-color: rgba(0, 0, 0, 0.8); color: white; text-align: center; padding: 10px; z-index: 1000;">
+    <p>Este site usa cookies para melhorar sua experiência. <a href="#">Saiba mais</a></p>
+    <button id="accept-cookies">Aceitar</button>
+    <button id="decline-cookies">Rejeitar</button>
+</div>
+
+<script>
+  // Função para aceitar os cookies
+  function acceptCookies() {
+      document.cookie = "cookies_aceitos=true; path=/; max-age=31536000"; // 1 ano
+      document.getElementById("cookie-banner").style.display = "none"; // Esconde o banner
+  }
+
+  // Função para rejeitar os cookies
+  function declineCookies() {
+      document.getElementById("cookie-banner").style.display = "none"; // Esconde o banner
+  }
+
+  // Verifica se o usuário já aceitou os cookies
+  function checkCookies() {
+      if (document.cookie.indexOf("cookies_aceitos=true") !== -1) {
+          document.getElementById("cookie-banner").style.display = "none";
+      }
+  }
+
+  // Chama a verificação ao carregar a página
+  window.onload = function() {
+      checkCookies();
+      document.getElementById("accept-cookies").addEventListener("click", acceptCookies);
+      document.getElementById("decline-cookies").addEventListener("click", declineCookies);
+  };
+</script>
