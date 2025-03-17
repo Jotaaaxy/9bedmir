@@ -1,0 +1,33 @@
+// Função para aceitar cookies
+function acceptCookies() {
+    document.cookie = "cookies_aceitos=true; path=/; max-age=31536000"; // 1 ano
+    document.getElementById("cookie-banner").style.display = "none";
+    console.log("Usuário aceitou os cookies: " + new Date().toISOString());
+}
+
+
+// Vincular os eventos de clique aos botões
+document.getElementById("accept-cookies").addEventListener("click", acceptCookies);
+document.getElementById("decline-cookies").addEventListener("click", declineCookies);
+
+
+// Verificar cookies ao carregar a página
+window.onload = checkCookies;
+
+// Função de log
+function logCookieConsent(action) {
+    console.log(`Usuário ${action} os cookies: ${new Date().toISOString()}`);
+}
+
+
+// Função para aceitar cookies
+function acceptCookies() {
+    document.cookie = "cookies_aceitos=true; path=/; max-age=31536000"; // 1 ano
+    document.getElementById("cookie-banner").style.display = "none";
+    logCookieConsent("aceitou");  // Log de aceitação
+}
+
+// Funções para exibir ou esconder o banner de cookies
+document.getElementById("accept-cookies").addEventListener("click", acceptCookies);
+document.getElementById("decline-cookies").addEventListener("click", declineCookies);
+
